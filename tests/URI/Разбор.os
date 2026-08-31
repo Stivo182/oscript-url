@@ -87,6 +87,7 @@
 
 &ПараметризованныйТест
 &ИсточникЗначение("/тест", "uri.invalid_syntax")
+&ИсточникЗначение("https://пример.рф/", "uri.invalid_syntax")
 &ИсточникЗначение("/%", "uri.invalid_percent_encoding")
 &ИсточникЗначение("/%1", "uri.invalid_percent_encoding")
 &ИсточникЗначение("/%ZZ", "uri.invalid_percent_encoding")
