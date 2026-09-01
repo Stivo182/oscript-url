@@ -1,7 +1,9 @@
 # url
 
-`url` — библиотека OneScript для строгого разбора, преобразования и изменения URI и URL по
-[RFC 3986](https://www.rfc-editor.org/rfc/rfc3986.html). Кодирование параметров формы соответствует алгоритму
+`url` — библиотека OneScript для строгого разбора, преобразования и изменения URI и URL с символами Unicode по
+стандартам
+[RFC 3986](https://www.rfc-editor.org/rfc/rfc3986.html) и
+[RFC 3987](https://www.rfc-editor.org/rfc/rfc3987.html). Кодирование параметров формы соответствует алгоритму
 [`application/x-www-form-urlencoded`](https://url.spec.whatwg.org/#application-x-www-form-urlencoded) из стандарта
 WHATWG URL. Библиотека не выполняет DNS-запросов и других сетевых операций.
 
@@ -28,7 +30,7 @@ opm install url
 Описание.ЗависитОт("url");
 ```
 
-## Разбор и разрешение URI
+## Разрешение URI
 
 ```bsl
 #Использовать url
@@ -51,11 +53,13 @@ https://example.com/api/users?page=2
 ```bsl
 #Использовать url
 
-Адрес = Новый URL("https://example.com/users?page=1");
+Адрес = Новый URL("https://example.com/users");
 
+Адрес.ДобавитьСегментПути("team/a");
 Адрес.ПараметрыЗапроса()
-    .Установить("page", "2")
-    .Добавить("include", "orders");
+    .Установить("q", "hello world")
+    .Добавить("include", "orders")
+    .Добавить("include", "contacts");
 
 Сообщить(Адрес.ВСтроку());
 ```
@@ -63,8 +67,30 @@ https://example.com/api/users?page=2
 Результат:
 
 ```text
-https://example.com/users?page=2&include=orders
+https://example.com/users/team%2Fa?q=hello+world&include=orders&include=contacts
 ```
+
+## Адреса с символами Unicode
+
+```bsl
+#Использовать url
+
+Адрес = Новый URL("https://пример.рф/путь?q=я");
+
+Сообщить(Адрес.ВСтроку());
+Сообщить(Адрес.КодированноеПредставление());
+```
+
+Результат:
+
+```text
+https://пример.рф/путь?q=я
+https://%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80.%D1%80%D1%84/%D0%BF%D1%83%D1%82%D1%8C?q=%D1%8F
+```
+
+`ВСтроку()` возвращает адрес с сохранением символов Unicode. `КодированноеПредставление()` возвращает
+ASCII-представление URI: символы Unicode преобразуются в UTF-8, после чего каждый полученный байт записывается
+как `%HH`.
 
 ## Документация
 
