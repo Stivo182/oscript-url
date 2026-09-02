@@ -8,6 +8,49 @@
 #Область Тесты
 
 &ПараметризованныйТест
+&ИсточникЗначение("http://foo.com/bar", "http://foo.com//baz", "http://foo.com//baz")
+&ИсточникЗначение("http://foo.com/bar", "http://foo.com///baz/quux", "http://foo.com///baz/quux")
+&ИсточникЗначение("http://foo.com/dot/./dotdot/../foo/bar", "../baz", "http://foo.com/dot/baz")
+&ИсточникЗначение("http://foo.com/foo%2fbar/", "../baz", "http://foo.com/baz")
+&ИсточникЗначение("http://foo.com/1/2/3", "./a%2f../../b/..%2fc", "http://foo.com/1/2/b/..%2fc")
+&ИсточникЗначение("http://foo.com/foo", "../bar%2fbaz", "http://foo.com/bar%2fbaz")
+&ИсточникЗначение("http://foo.com/foo%2dbar/", "./baz-quux", "http://foo.com/foo%2dbar/baz-quux")
+&ИсточникЗначение("http://foo.com?a=b", "https://bar.com/", "https://bar.com/")
+&ИсточникЗначение("http://foo.com/", "https://bar.com/?", "https://bar.com/?")
+&ИсточникЗначение("http://foo.com/bar", "/baz", "http://foo.com/baz")
+&ИсточникЗначение("http://foo.com/bar?a=b#f", "/baz", "http://foo.com/baz")
+&ИсточникЗначение("https://foo.com/bar?a=b", "//bar.com/quux", "https://bar.com/quux")
+&ИсточникЗначение("http://foo.com", ".", "http://foo.com/")
+&ИсточникЗначение("http://foo.com/bar/", ".", "http://foo.com/bar/")
+&ИсточникЗначение("http://foo.com/bar/baz/", "quux", "http://foo.com/bar/baz/quux")
+&ИсточникЗначение("http://foo.com/bar/baz", "../../../../../quux", "http://foo.com/quux")
+&ИсточникЗначение("http://foo.com/bar", "..", "http://foo.com/")
+&ИсточникЗначение("http://foo.com/bar/baz", "quux/dotdot/../tail", "http://foo.com/bar/quux/tail")
+&ИсточникЗначение("http://foo.com/bar", "...", "http://foo.com/...")
+&ИсточникЗначение("http://foo.com/bar", ".#frag", "http://foo.com/#frag")
+&ИсточникЗначение("http://foo.com/1/2%2f/3%2f4/5", "../../a/b/c", "http://foo.com/1/a/b/c")
+&ИсточникЗначение("http://foo.com/foo%20bar/", "../baz", "http://foo.com/baz")
+&ИсточникЗначение("https://a/b/c/d;p?q", "//g?q", "https://g?q")
+&ИсточникЗначение("https://a/b/c/d;p?q", "//g#s", "https://g#s")
+&ИсточникЗначение("https://a/b/c/d;p?q#s", "?y", "https://a/b/c/d;p?y")
+&ИсточникЗначение("https://a/b/c/d;p?q#s", "?", "https://a/b/c/d;p?")
+Процедура ТестДолжен_РазрешитьСсылкуСКодированнымиРазделителями(
+	Основа, Ссылка, ОжидаемаяСтрока
+) Экспорт
+
+	// Подготовка
+	База = Новый URL(Основа);
+
+	// Действие
+	Результат = База.Разрешить(Ссылка);
+
+	// Проверка
+	Ожидаем.Что(Результат.ВСтроку()).Равно(ОжидаемаяСтрока);
+	Ожидаем.Что(База.ВСтроку()).Равно(Основа);
+
+КонецПроцедуры
+
+&ПараметризованныйТест
 &ИсточникЗначение(1)
 &ИсточникЗначение(Null)
 &ИсточникЗначение(Неопределено)
