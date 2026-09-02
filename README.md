@@ -1,5 +1,9 @@
 # url
 
+[![Release](https://img.shields.io/github/release/Stivo182/oscript-url.svg)](https://github.com/Stivo182/oscript-url/releases)
+[![Тестирование](https://github.com/stivo182/oscript-url/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/stivo182/oscript-url/actions/workflows/test.yml)
+[![Used by](https://litrosbadges.ru/package/url.svg)](https://litrosbadges.ru/package/url)
+
 `url` - библиотека OneScript для разбора, построения и изменения URL и относительных ссылок.
 
 Единый класс [`URL`](docs/URL.md) представляет абсолютные адреса и относительные ссылки. Библиотека поддерживает
