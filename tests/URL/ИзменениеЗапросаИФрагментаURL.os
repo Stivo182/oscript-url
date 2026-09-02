@@ -131,15 +131,15 @@
 КонецПроцедуры
 
 &ПараметризованныйТест
-&ИсточникЗначение("Путь", "тест", "uri.invalid_syntax")
-&ИсточникЗначение("Путь", "a?b", "uri.invalid_syntax")
-&ИсточникЗначение("Путь", "a%ZZ", "uri.invalid_percent_encoding")
-&ИсточникЗначение("Запрос", "тест", "uri.invalid_syntax")
-&ИсточникЗначение("Запрос", "a#b", "uri.invalid_syntax")
-&ИсточникЗначение("Запрос", "a%ZZ", "uri.invalid_percent_encoding")
-&ИсточникЗначение("Фрагмент", "тест", "uri.invalid_syntax")
-&ИсточникЗначение("Фрагмент", "a#b", "uri.invalid_syntax")
-&ИсточникЗначение("Фрагмент", "a%ZZ", "uri.invalid_percent_encoding")
+&ИсточникЗначение("Путь", "тест", "url.invalid_syntax")
+&ИсточникЗначение("Путь", "a?b", "url.invalid_syntax")
+&ИсточникЗначение("Путь", "a%ZZ", "url.invalid_percent_encoding")
+&ИсточникЗначение("Запрос", "тест", "url.invalid_syntax")
+&ИсточникЗначение("Запрос", "a#b", "url.invalid_syntax")
+&ИсточникЗначение("Запрос", "a%ZZ", "url.invalid_percent_encoding")
+&ИсточникЗначение("Фрагмент", "тест", "url.invalid_syntax")
+&ИсточникЗначение("Фрагмент", "a#b", "url.invalid_syntax")
+&ИсточникЗначение("Фрагмент", "a%ZZ", "url.invalid_percent_encoding")
 Процедура ТестДолжен_АтомарноОтклонитьНедопустимыйКодированныйКомпонент(
 	ВидКомпонента, Значение, ОжидаемыйКод
 ) Экспорт
