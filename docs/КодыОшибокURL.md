@@ -65,9 +65,9 @@
 | `НедопустимыеДанныеIDNA()` | `idna.data.invalid` | Нормативные данные IDNA недоступны или повреждены |
 
 Форма процентного кодирования определена в
-[RFC 3986, раздел 2.1](https://www.rfc-editor.org/rfc/rfc3986.html#section-2.1). Ограничения на сочетание
+[RFC 3986 §2.1](https://www.rfc-editor.org/rfc/rfc3986.html#section-2.1). Ограничения на сочетание
 серверной части и пути определены в
-[RFC 3986, раздел 3](https://www.rfc-editor.org/rfc/rfc3986.html#section-3).
+[RFC 3986 §3](https://www.rfc-editor.org/rfc/rfc3986.html#section-3).
 
 Для ошибок файловой системы при чтении нормативных данных IDNA исходная ошибка сохраняется в качестве причины.
 
